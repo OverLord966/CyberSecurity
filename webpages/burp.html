@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OverSecurity - Tutoriais</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <h1 class="logo">OverSecurity</h1>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>         <!-- sobe uma pasta para raiz -->
+      <li><a href="tutoriais.html">Tutoriais</a></li>
+      <li><a href="ferramentas.html">Ferramentas</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="noticias.html">Notícias</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>    
+  </nav>
+
+  <section class="tutorial-container">
+    <div class="tutorial-step">
+      <h4>O que é o Burp Suite?</h4>
+      <p>Burp Suite é uma plataforma integrada para testes de segurança em aplicações web. Ela permite interceptar, 
+        modificar e analisar o tráfego HTTP/S entre o navegador e o servidor, 
+        facilitando a identificação de vulnerabilidades.</p>
+    </div>
+
+    <div class="tutorial-step">
+      <h4>Instalação</h4>
+      <p>Para instalar o Burp Suite Community Edition no Linux (Debian/Ubuntu), siga os passos:</p>
+      <pre><code>sudo apt update
+sudo apt install openjdk-11-jre
+wget https://portswigger.net/burp/releases/download?product=community&version=2024.3.1&type=jar -O burpsuite_community.jar
+java -jar burpsuite_community.jar</code></pre>
+      <p>Alternativamente, você pode baixar o instalador direto do site oficial <a href="https://portswigger.net/burp/communitydownload" target="_blank" rel="noopener noreferrer">aqui</a>.</p>
+    </div>
+
+    <div class="tutorial-step">
+      <h4>Configuração básica para interceptação</h4>
+      <p>1. Abra o Burp Suite e selecione "Temporary Project".</p>
+      <p>2. Na aba "Proxy", certifique-se que o "Intercept" esteja ligado.</p>
+      <p>3. Configure o navegador para usar o proxy do Burp (por padrão, localhost na porta 8080).</p>
+      <p>4. Para evitar problemas com HTTPS, importe o certificado CA do Burp no navegador.</p>
+    </div>
+
+    <div class="tutorial-step">
+      <h4>Exemplo básico de uso</h4>
+      <p>Após configurar o proxy no navegador, navegue normalmente. O Burp Suite irá interceptar as requisições HTTP/S.</p>
+      <p>Você pode modificar os parâmetros e enviar as requisições para analisar as respostas e identificar possíveis vulnerabilidades.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 OverSecurity - Todos os direitos reservados</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OverSecurity - Login / Registo</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <script src="auth.js"></script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <h1 class="logo">OverSecurity</h1>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="tutoriais.html">Tutoriais</a></li>
+      <li><a href="ferramentas.html">Ferramentas</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="noticias.html">Notícias</a></li>
+      <li><a href="contato.html">Contato</a></li>
+      <li id="userDisplay"><a href="login.html">Entrar</a></li>
+    </ul>
+  </nav>
+
+  <!-- Conteúdo Principal (formulário de login/registo centralizado) -->
+  <div class="main-content">
+    <div class="auth-container" id="auth-container">
+      <!-- Formulário de Login -->
+      <div id="login-form">
+        <h2>Login</h2>
+        <input type="text" id="login-username" placeholder="Nome de usuário" />
+        <input type="password" id="login-password" placeholder="Senha" />
+        <button onclick="login()">Entrar</button>
+        <p class="toggle-link" onclick="toggleForm('register')">Ainda não tem conta? Registe-se</p>
+      </div>
+
+      <!-- Formulário de Registo -->
+      <div id="register-form" style="display: none;">
+        <h2>Registo</h2>
+        <input type="text" id="register-username" placeholder="Nome de usuário" />
+        <input type="email" id="register-email" placeholder="Email" />
+        <input type="password" id="register-password" placeholder="Senha" />
+        <button onclick="register()">Registar</button>
+        <p class="toggle-link" onclick="toggleForm('login')">Já tem uma conta? Faça login</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 OverSecurity - Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    // Alternar entre o formulário de login e registo
+    function toggleForm(form) {
+      const loginForm = document.getElementById('login-form');
+      const registerForm = document.getElementById('register-form');
+
+      if (form === 'register') {
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'block';
+      } else {
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+      }
+    }
+
+    // Função para realizar o login
+    function login() {
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
+
+      if (username && password) {
+        localStorage.setItem('username', username); // Armazenar o nome de utilizador
+        alert(`Login realizado com sucesso! Bem-vindo, ${username}!`);
+        updateNavbar(); // Atualiza a navbar após login
+      } else {
+        alert('Por favor, preencha todos os campos.');
+      }
+    }
+
+    // Função para registar o utilizador
+    function register() {
+      const username = document.getElementById('register-username').value;
+      const email = document.getElementById('register-email').value;
+      const password = document.getElementById('register-password').value;
+
+      if (username && email && password) {
+        localStorage.setItem('username', username); // Armazenar o nome de utilizador
+        alert(`Conta criada com sucesso! Bem-vindo, ${username}!`);
+        updateNavbar(); // Atualiza a navbar após registo
+      } else {
+        alert('Por favor, preencha todos os campos.');
+      }
+    }
+
+    // Função para atualizar a navbar
+    function updateNavbar() {
+      const userDisplay = document.getElementById('userDisplay');
+      const username = localStorage.getItem('username');
+      
+      if (username) {
+        userDisplay.innerHTML = `<a href="profile.html">Olá, ${username}</a>`; // Exibe o nome do utilizador
+      }
+    }
+
+    // Atualizar a navbar ao carregar a página
+    window.onload = function() {
+      updateNavbar();
+    }
+  </script>
+</body>
+</html>

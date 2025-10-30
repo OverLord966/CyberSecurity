@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OverSecurity - Tutoriais</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <h1 class="logo">OverSecurity</h1>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>         <!-- sobe uma pasta para raiz -->
+      <li><a href="tutoriais.html">Tutoriais</a></li>
+      <li><a href="ferramentas.html">Ferramentas</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>    
+  </nav>
+    <section class="tutorial-container">
+      <div class="tutorial-step">
+        <h4>O que é o Nmap?</h4>
+        <p>O Nmap é uma ferramenta de código aberto usada para varredura e auditoria de redes.</p>
+      </div>
+  
+      <div class="tutorial-step">
+        <h4>Instalação</h4>
+        <p>Instalação no Debian/Ubuntu:</p>
+        <pre><code>sudo apt install nmap</code></pre>
+      </div>
+  
+      <div class="tutorial-step">
+        <h4>Comando básico</h4>
+        <p>Para escanear um IP específico:</p>
+        <pre><code>nmap 192.168.1.1</code></pre>
+      </div>
+  
+      <div class="tutorial-step">
+        <h4>Escaneamento de portas comuns</h4>
+        <p>Para escanear as portas mais comuns:</p>
+        <pre><code>nmap -F 192.168.1.1</code></pre>
+      </div>
+  
+      <div class="tutorial-step">
+        <h4>Detecção de serviços e versões</h4>
+        <p>Para identificar serviços e suas versões nas portas abertas:</p>
+        <pre><code>nmap -sV 192.168.1.1</code></pre>
+      </div>
+  
+      <div class="tutorial-step">
+        <h4>Escaneamento agressivo</h4>
+        <p>Inclui detecção de SO, script scanning e traceroute:</p>
+        <pre><code>nmap -A 192.168.1.1</code></pre>
+      </div>
+    </section>
+  
+    <footer class="footer">
+      <p>&copy; 2025 OverSecurity - Todos os direitos reservados</p>
+    </footer>
+
+  </body>
+</html>

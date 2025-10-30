@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OverSecurity - Tutoriais</title>
+  <link rel="stylesheet" href="../style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <h1 class="logo">OverSecurity</h1>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>         <!-- sobe uma pasta para raiz -->
+      <li><a href="tutoriais.html">Tutoriais</a></li>
+      <li><a href="ferramentas.html">Ferramentas</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>    
+  </nav>
+  <section class="hero">
+    <h2>Teste aqui o seu conhecimento</h3>
+  </section>
+  <!-- Botão para iniciar o quiz -->
+<button class="btn" id="startBtn">Iniciar Quiz</button>
+
+<!-- Modal Quiz -->
+<div class="quiz-modal" id="quiz-modal">
+  <div class="quiz-content">
+    <h2 class="quiz-question" id="quiz-question"></h2>
+    <div class="quiz-options" id="quiz-options"></div>
+    <button id="quiz-restart" class="quiz-restart" style="display: none;">Voltar a Fazer</button>
+    <button class="quiz-close" id="quiz-close">Fechar</button>
+</div>
+</div>
+<section class="quiz-destaques">
+  <h2>Desafios Práticos de Segurança</h2>
+  <div class="cards">
+    <div class="card">
+      <h4>🎯 <a href="https://overthewire.org/wargames/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">OverTheWire</a></h4>
+      <p>Aprende hacking ético com desafios de CTF desde o nível mais básico.</p>
+    </div>
+    <div class="card">
+      <h4>🧩 <a href="https://tryhackme.com/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">TryHackMe</a></h4>
+      <p>Explora ambientes reais com laboratórios interativos e missões práticas.</p>
+    </div>
+    <div class="card">
+      <h4>🛠️ <a href="desafios.html" style="color: inherit; text-decoration: underline;">Desafios Locais</a></h4>
+      <p>Cenários criados pela equipa para treinar técnicas de intrusão e defesa.</p>
+    </div>
+  </div>
+</section>
+
+  <footer class="footer">
+    <p>&copy; 2025 OverSecurity - Todos os direitos reservados</p>
+  </footer>
+</body>
+</html>

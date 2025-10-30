@@ -1,0 +1,518 @@
+/* style.css - OverSecurity */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0f172a;
+    color: #f1f5f9;
+    margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e293b;
+    padding: 0rem 3rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    color: #4ade80;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #f1f5f9;
+    transition: color 0.3s;
+  }
+  
+  .nav-links a:hover {
+    color: #4ade80;
+  }
+  
+  .hero {
+
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+  
+  .hero p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+    color: #d1d5db;
+  }
+  .h2{
+    display: flex;
+    align-items: center;
+  }
+  .hero h3{
+    font-size: 2.5rem;
+  }
+  
+  /* Estilo do botão para o quiz */
+.btn {
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    background-color: #4ade80; /* Verde */
+    color: #1a1a1a;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Adicionando um pouco de espaço */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .btn:hover {
+    background-color: #36b036; /* Verde mais escuro ao passar o mouse */
+  }
+  
+  /* Estilo do Modal */
+  .quiz-modal {
+    display: none; /* Inicialmente invisível */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Coloca o modal acima de outros conteúdos */
+  }
+  
+  .quiz-content {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 70%;
+    max-width: 500px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Adicionando sombra para destacar */
+  }
+  
+  .quiz-question {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .quiz-options button {
+    padding: 10px 70px ;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 500px;
+    background-color: #4ade80;
+    color: #1a1a1a;
+    border: none;
+    text-align: center;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .quiz-options button:hover {
+    background-color: #36b036;
+  }
+  
+  .quiz-next, .quiz-close {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4ade80;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .option-btn.correct {
+    background-color: #4CAF50; /* verde */
+    color: white;
+  }
+  
+  .option-btn.incorrect {
+    background-color: #f44336; /* vermelho */
+    color: white;
+  }
+  
+  .option-btn.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  
+  /* Estilo comum para os botões "Próxima", "Fechar" e "Voltar a Fazer" */
+.quiz-next, .quiz-close, .quiz-restart {
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #4ade80;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.quiz-next:hover, .quiz-close:hover, .quiz-restart:hover {
+  background-color: #36b036;
+}
+.quiz-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quiz-content button {
+  margin: 5px; /* Espaçamento entre os botões */
+}
+
+/* Alinhamento dos botões "Voltar a Fazer" e "Fechar" */
+.quiz-buttons {
+  display: flex;
+  gap: 10px; /* Espaçamento entre os botões */
+  justify-content: center;
+  width: 100%; /* Faz com que os botões fiquem no centro */
+}
+
+  .quiz-next:hover, .quiz-close:hover {
+    background-color: #36b036;
+  }
+  
+  /* Estilo para quando o modal está aberto */
+  .quiz-modal.show {
+    display: flex; /* Exibe o modal */
+  }
+  .comece{
+    background-color: #4ade80;
+    color: #000;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  .comece:hover {
+    background-color: #22c55e;
+  }
+  .destaques {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+  .destaques h2{
+    display: flex;
+    align-items: center;
+  }
+  .destaques h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .card {
+    background-color: #1e293b;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card h4 {
+    color: #4ade80;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .footer {
+    background-color: #1e293b;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.875rem;
+    color: #94a3b8;
+    margin-top: 2rem;
+  }
+  
+   /* Formulário de Contato */
+   .formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .formulario label {
+    font-size: 1.1rem;
+    color: #fff;
+  }
+  
+  .formulario input,
+  .formulario textarea {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #2c2c2c;
+    border: 1px solid #4ade80;
+    color: #fff;
+    border-radius: 4px;
+  }
+  
+  .formulario input:focus,
+  .formulario textarea:focus {
+    outline: none;
+    border-color: #80ff80;
+  }
+  
+  /* Estilos do botão de envio no formulário */
+  .formulario button {
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    background-color: #4ade80;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .formulario button:hover {
+    background-color: #36b036;
+  }
+  
+  @media (max-width: 600px) {
+    .formulario {
+      width: 90%;
+    }
+  
+    .formulario button {
+      width: 100%;
+    }
+  
+    .cards {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+  .main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Preenche o espaço restante da tela */
+    background-color: #1e293b;
+    padding: 20px;
+    min-height: calc(100vh - 60px); /* Garante que a altura seja ajustada com a navbar */
+  }
+  
+  /* Formulário de login/registo */
+  .auth-container {
+    background-color: rgb(77, 77, 77);
+    padding: 30px;
+    width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .auth-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 28px;
+  }
+  
+  .auth-container input {
+    width: 100%;
+    padding: 8px;
+    margin: 7px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+  }
+  
+  .auth-container button {
+    width: 100%;
+    padding: 8px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .auth-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  .toggle-link {
+    margin-top: 10px;
+    color: #007BFF;
+    cursor: pointer;
+  }
+  
+  .toggle-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #777;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  section {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  section h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #22c55e;
+  }
+  
+  section p, section ul {
+    font-size: 1.1em;
+    line-height: 1.6;
+  }
+  
+  ul {
+    list-style: disc;
+    padding-left: 20px;
+  }
+  
+  a {
+    color: #4ade80;
+    text-decoration: underline;
+  }
+  /* === Estilos específicos para a página de tutorial Nmap === */
+
+.tutorial-container {
+  padding: 2rem;
+  background-color: #1e293b;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.tutorial-step {
+  margin-bottom: 2rem;
+  background-color: #0f172a;
+  padding: 1rem 1.5rem;
+  border-left: 5px solid #4ade80;
+  border-radius: 6px;
+}
+
+.tutorial-step h4 {
+  color: #4ade80;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tutorial-step p {
+  color: #e2e8f0;
+  line-height: 1.6;
+}
+
+pre, code {
+  background-color: #1e293b;
+  color: #93c5fd;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+  overflow-x: auto;
+  display: block;
+  margin: 1rem 0;
+}
+.descricao-ferramentas {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin: 30px auto;
+  border-radius: 12px;
+  max-width: 800px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.descricao-ferramentas h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+.descricao-ferramentas ul {
+  margin-left: 20px;
+}
+.missoes {
+  padding: 2rem;
+}
+
+.missao-card {
+  background-color: #1e1e2f;
+  color: #fff;
+  border-left: 5px solid #00bfa6;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.missao-card:hover {
+  transform: scale(1.01);
+}
+
+.missao-card h3 {
+  margin-top: 0;
+}
+
+.missao-card code {
+  background-color: #333;
+  padding: 2px 6px;
+  border-radius: 5px;
+  color: #0ff;
+}

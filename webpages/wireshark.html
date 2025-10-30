@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OverSecurity - Tutorial Wireshark</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <h1 class="logo">OverSecurity</h1>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="tutoriais.html">Tutoriais</a></li>
+      <li><a href="ferramentas.html">Ferramentas</a></li>
+    </ul>
+  </nav>
+
+  <section class="tutorial-container">
+    <h2>Instalação do Wireshark</h2>
+    <p>O Wireshark é um analisador de pacotes de rede muito utilizado para capturar e inspecionar tráfego de rede.</p>
+
+    <h3>Windows</h3>
+    <ol>
+      <li>Acesse o site oficial: <a href="https://www.wireshark.org/download.html" target="_blank" rel="noopener">wireshark.org/download</a></li>
+      <li>Faça o download do instalador para Windows.</li>
+      <li>Execute o instalador e siga os passos na tela.</li>
+      <li>Recomenda-se instalar o WinPcap ou Npcap para captura de pacotes.</li>
+    </ol>
+
+    <h3>Linux (Debian/Ubuntu)</h3>
+    <pre><code>sudo apt update
+sudo apt install wireshark</code></pre>
+    <p>Durante a instalação, você pode ser questionado sobre permitir que usuários não-root capturem pacotes. Configure conforme preferir.</p>
+
+    <h3>macOS</h3>
+    <p>Use o Homebrew para instalar:</p>
+    <pre><code>brew install wireshark</code></pre>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 OverSecurity - Todos os direitos reservados</p>
+  </footer>
+</body>
+</html>

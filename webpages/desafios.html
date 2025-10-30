@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafios Locais - OverSecurity</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <h1 class="logo">OverSecurity</h1>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="tutoriais.html">Tutoriais</a></li>
+      <li><a href="ferramentas.html">Ferramentas</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>    
+  </nav>
+
+  <section class="missoes">
+    <h2>Missões Locais</h2>
+  
+    <div class="missao-card">
+      <h3>🟢 Missão 1: Quebra de Senha ZIP (John the Ripper)</h3>
+      <p>Recebeste um ficheiro ZIP protegido. Usa força bruta com o <strong>John the Ripper</strong> ou <strong>fcrackzip</strong> para descobrir a senha.</p>
+      <p><strong>Dica:</strong> Usa uma wordlist como <code>rockyou.txt</code>. Tenta começar por senhas simples e comuns.</p>
+      <p><strong>Objetivo:</strong> Compreender como ataques de força bruta funcionam e a importância de senhas fortes em ficheiros comprimidos.</p>
+    </div>
+  
+    <div class="missao-card">
+      <h3>🔵 Missão 2: Descobre a Rede (Nmap)</h3>
+      <p>Faz um scan à tua rede local com <strong>Nmap</strong>. Encontra máquinas e serviços ativos.</p>
+      <p><strong>Objetivo:</strong> Identificar pelo menos 2 serviços e respetivas versões para perceber o panorama de vulnerabilidades possíveis.</p>
+      <p><strong>Dica:</strong> Usa opções como <code>-sV</code> para detetar versões e <code>-O</code> para identificar sistemas operativos.</p>
+    </div>
+  
+    <div class="missao-card">
+      <h3>🟡 Missão 3: Intercetação de Login (Burp Suite)</h3>
+      <p>Interceta um request de login vulnerável com o <strong>Burp Suite</strong> e tenta autenticar-te sem credenciais válidas.</p>
+      <p><strong>Objetivo:</strong> Perceber como a manipulação de pedidos HTTP pode permitir bypass de autenticação se não houver validação adequada no servidor.</p>
+      <p><strong>Dica:</strong> Usa o <em>Intercept</em> para modificar parâmetros ou cookies durante o processo de login.</p>
+    </div>
+  
+    <div class="missao-card">
+        <h3>🔴 Missão 4: Análise de Pacotes em Texto Claro (Wireshark)</h3>
+        <p>Recebeste um ficheiro <code>.pcap</code> contendo tráfego de rede capturado. Usa o <strong>Wireshark</strong> para analisar os pacotes e identificar credenciais transmitidas em protocolos não criptografados, como HTTP, FTP ou Telnet.</p>
+        <p><strong>Objetivo:</strong> Encontrar pelo menos um par de credenciais (usuário e senha) que tenha sido transmitido em texto claro.</p>
+        <p><strong>Dicas:</strong></p>
+        <ul>
+          <li>Utiliza filtros do Wireshark, por exemplo, <code>http.authbasic</code>, <code>ftp</code> ou <code>telnet</code>, para facilitar a busca.</li>
+          <li>Presta atenção nos campos de requisição e resposta, onde as credenciais podem estar visíveis.</li>
+          <li>Verifica o conteúdo das mensagens para encontrar strings legíveis.</li>
+        </ul>
+        <p><strong>Nota:</strong> Se ainda não tens o ficheiro <code>.pcap</code>, podes gerar um capturando tráfego na tua rede local com <code>tcpdump</code> ou baixar exemplos públicos em sites como o <a href="https://wiki.wireshark.org/SampleCaptures" target="_blank" rel="noopener noreferrer">Wireshark Sample Captures</a>.</p>
+    </div>
+      
+  
+    <div class="missao-card">
+      <h3>🟣 Missão 5: SQL Injection Simples</h3>
+      <p>Explora um formulário vulnerável e tenta autenticar-te como admin com este payload:</p>
+      <p><code>' OR '1'='1</code></p>
+      <p><strong>Objetivo:</strong> Compreender como injeções SQL podem permitir acesso não autorizado e a importância de sanitização de inputs.</p>
+      <p><strong>Dica:</strong> Testa variações do payload para perceber o comportamento da aplicação.</p>
+    </div>
+  </section>
+  <section class="desafio-real">
+    <h2>Desafio Real: Quebra Simples de Hash MD5</h2>
+    <p>Recebeste as seguintes hashes MD5. Descobre qual a palavra original para cada hash (palavras simples, minúsculas, sem espaços):</p>
+  
+    <ul>
+      <li><code>5d41402abc4b2a76b9719d911017c592</code></li> <!-- hello -->
+      <li><code>098f6bcd4621d373cade4e832627b4f6</code></li> <!-- test -->
+      <li><code>5ebe2294ecd0e0f08eab7690d2a6ee69</code></li> <!-- secret -->
+    </ul>
+  
+    <form id="hashForm">
+      <label for="hash1">Texto para hash 1:</label>
+      <input type="text" id="hash1" required><br><br>
+  
+      <label for="hash2">Texto para hash 2:</label>
+      <input type="text" id="hash2" required><br><br>
+  
+      <label for="hash3">Texto para hash 3:</label>
+      <input type="text" id="hash3" required><br><br>
+  
+      <button type="submit">Verificar respostas</button>
+    </form>
+  
+    <div id="resultado" style="margin-top:20px; font-weight:bold;"></div>
+  </section>
+  
+  <script>
+    const respostas = {
+      hash1: "hello",
+      hash2: "test",
+      hash3: "secret"
+    };
+  
+    document.getElementById("hashForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+  
+      const r1 = document.getElementById("hash1").value.trim().toLowerCase();
+      const r2 = document.getElementById("hash2").value.trim().toLowerCase();
+      const r3 = document.getElementById("hash3").value.trim().toLowerCase();
+  
+      let mensagem = "";
+  
+      if (r1 === respostas.hash1 && r2 === respostas.hash2 && r3 === respostas.hash3) {
+        mensagem = "Parabéns! Todas as respostas estão corretas.";
+      } else {
+        mensagem = "Algumas respostas estão incorretas. Tenta novamente!";
+      }
+  
+      document.getElementById("resultado").textContent = mensagem;
+    });
+  </script>
+  
+  
+
+  <footer class="footer">
+    <p>&copy; 2025 OverSecurity - Todos os direitos reservados</p>
+  </footer>
+</body>
+</html>
