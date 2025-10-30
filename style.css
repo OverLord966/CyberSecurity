@@ -6,9 +6,9 @@ body {
     background-color: #0f172a;
     color: #f1f5f9;
     margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: Arial, sans-serif;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
   }
   .navbar {
     display: flex;
@@ -96,38 +96,42 @@ body {
   
   /* Estilo do Modal */
   .quiz-modal {
-    display: none; /* Inicialmente invisível */
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Coloca o modal acima de outros conteúdos */
+    z-index: 1000;
   }
   
+  /* Conteúdo do quiz */
   .quiz-content {
-    background-color: #1a1a1a;
-    padding: 30px;
+    background-color: #1f1f1f;
+    padding: 25px;
     border-radius: 10px;
+    width: 420px;
     text-align: center;
-    width: 70%;
-    max-width: 500px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Adicionando sombra para destacar */
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
   }
   
-  .quiz-question {
-    font-size: 1.5rem;
-    color: #fff;
+  #quiz-question {
+    font-size: 18px;
     margin-bottom: 20px;
   }
   
-  .quiz-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  /* Opções de resposta */
+  .option-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
   }
   
   .quiz-options button {
@@ -148,14 +152,17 @@ body {
   }
   
   .quiz-next, .quiz-close {
-    padding: 10px 20px;
-    margin-top: 20px;
-    background-color: #4ade80;
-    color: #1a1a1a;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    background-color: #dc3545; /* vermelho */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 5px 0 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
   }
+  
   .option-btn.correct {
     background-color: #4CAF50; /* verde */
     color: white;
@@ -172,7 +179,7 @@ body {
   }
   
   /* Estilo comum para os botões "Próxima", "Fechar" e "Voltar a Fazer" */
-.quiz-next, .quiz-close, .quiz-restart {
+.quiz-next{
   padding: 10px 20px;
   margin-top: 10px;
   background-color: #4ade80;
@@ -181,7 +188,44 @@ body {
   border-radius: 4px;
   cursor: pointer;
 }
-
+#quiz-close {
+  background-color: #dc3545; /* vermelho */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 5px 0 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+#quiz-close:hover {
+  background-color: #e5534b;
+}
+#quiz-restart {
+  background-color: #1DB954; /* verde */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+  display: none; /* aparece apenas quando necessário */
+}
+#startBtn {
+  background-color: #1DB954; /* verde Spotify style */
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+#startBtn:hover {
+  background-color: #1ed760;
+}
 .quiz-next:hover, .quiz-close:hover, .quiz-restart:hover {
   background-color: #36b036;
 }

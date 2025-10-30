@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OverSecurity - Tutoriais</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <h1 class="logo">OverSecurity</h1>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>         <!-- sobe uma pasta para raiz -->
+      <li><a href="tutoriais.html">Tutoriais</a></li>
+      <li><a href="ferramentas.html">Ferramentas</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="noticias.html">Notícias</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>    
+  </nav>
+
+  <section class="tutorial-container">
+    <div class="tutorial-step">
+      <h4>O que é o Cisco Packet Tracer?</h4>
+      <p>O Cisco Packet Tracer é um simulador de rede desenvolvido pela Cisco para ensinar e aprender conceitos de redes de computadores. Ele permite que os usuários criem e configurem redes 
+        virtualmente, simulando dispositivos como roteadores, switches, computadores e dispositivos IoT, sem a necessidade de hardware físico. </p>
+    </div>
+
+    <div class="tutorial-step">
+      <h4>Instalação</h4>
+      <p>Para instalar o Cisco Packet Tracer segue-se o link para download:</p>
+      <p><a href="https://www.netacad.com/articles/news/download-cisco-packet-tracer"></a></p>
+    </div>
+
+    <section class="tutorial">
+      <div class="tutorial-step">
+        <h4>Laboratório básico no Cisco Packet Tracer — preparar a topologia</h4>
+        <ol>
+          <li>Abra o Packet Tracer e crie a seguinte topologia simples:
+            <ul>
+              <li>1 Router (por exemplo, 1941)</li>
+              <li>1 Switch (por exemplo, 2960)</li>
+              <li>2 PCs (PC0 e PC1)</li>
+              <li>1 Server (Server0)</li>
+            </ul>
+          </li>
+          <li>Interligue: Router — Switch — (PC0, PC1, Server0). Use cabos Copper Straight‑Through.</li>
+          <li>No Server0 → Desktop → Services:
+            <ul>
+              <li>Ative o serviço HTTP (marque HTTP) e, opcionalmente, coloque uma página index.html simples.</li>
+            </ul>
+          </li>
+          <li>No PC0 e PC1 → Desktop → IP Configuration: atribua IPs estáticos na mesma rede do router. Exemplo:
+            <ul>
+              <li>PC0: 192.168.10.10 / 255.255.255.0, Gateway 192.168.10.1</li>
+              <li>Server0: 192.168.10.20 / 255.255.255.0, Gateway 192.168.10.1</li>
+              <li>Router (interface conectada ao switch): 192.168.10.1 / 255.255.255.0</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    
+      <div class="tutorial-step">
+        <h4>Configuração básica do Router (CLI)</h4>
+        <p>Se preferires configurar o router por CLI, exemplo mínimo (entra no modo de configuração):</p>
+        <pre><code>
+    enable
+    configure terminal
+    interface GigabitEthernet0/0
+     ip address 192.168.10.1 255.255.255.0
+     no shutdown
+    exit
+    interface GigabitEthernet0/1
+     no shutdown
+    exit
+    end
+    write memory
+        </code></pre>
+        <p>Nota: adapta nomes de interfaces e endereços conforme a tua topologia.</p>
+      </div>
+    
+      <div class="tutorial-step">
+        <h4>Gerar tráfego HTTP para inspeção</h4>
+        <ol>
+          <li>No PC0 → Desktop → Web Browser: na barra de endereços coloca <code>http://192.168.10.20</code> (IP do Server0) e carrega para gerar uma requisição HTTP.</li>
+          <li>Se o Server tiver uma página, o browser mostrará o conteúdo; isto gera os pacotes que vamos inspecionar.</li>
+        </ol>
+      </div>
+    
+      <div class="tutorial-step">
+        <h4>Usar o Modo Simulation para inspecionar pacotes</h4>
+        <ol>
+          <li>Muda para o modo <strong>Simulation</strong> (canto inferior direito — botão "Real Time" → "Simulation").</li>
+          <li>Na área "Packet Filters" selecciona apenas os protocolos que queres ver (por exemplo, marque apenas <em>HTTP</em> para filtrar tráfego da aplicação web).</li>
+          <li>Carrega em "Auto Capture / Play" (play) para que o Packet Tracer capture e avance automaticamente os eventos.</li>
+          <li>Quando um evento aparecer na timeline, clica sobre ele e escolhe <strong>Inspect</strong> (ou clica duas vezes na linha do evento). Vais ver:
+            <ul>
+              <li>Resumo do pacote (origem, destino, protocolo).</li>
+              <li>Detalhes por camadas: Ethernet, IP, TCP e HTTP (com cabeçalhos e, se aplicável, payload).</li>
+            </ul>
+          </li>
+          <li>Explora campos como <code>Source IP</code>, <code>Destination IP</code>, portas TCP, flags (SYN, ACK) e o corpo HTTP (GET/POST).</li>
+        </ol>
+      </div>
+    
+      <div class="tutorial-step">
+        <h4>Exemplo básico de uso / exercícios sugeridos</h4>
+        <ul>
+          <li><strong>Inspecionar um GET:</strong> abre uma página no Server0 e analisa no Simulation como é construída a requisição GET e a resposta 200 OK.</li>
+          <li><strong>Bloquear com ACL:</strong> adiciona uma ACL no router para bloquear PC1 de aceder ao Server0 e observa a diferença no Simulation.</li>
+          <li><strong>Alterar filtros:</strong> remove o filtro HTTP para ver tudo (ARP, ICMP, TCP) e observar a sequência completa (ARP request/reply, TCP handshake, HTTP).</li>
+          <li><strong>Gerar tráfego ICMP:</strong> usa o Terminal do PC (Desktop → Command Prompt) com <code>ping 192.168.10.20</code> e observa os ICMP packets.</li>
+        </ul>
+      </div>
+    
+      <div class="tutorial-step">
+        <h4>Dicas e boas práticas</h4>
+        <ul>
+          <li>Usa o Simulation para estudar cada passo do pacote — é uma ferramenta educativa excelente para compreender protocolos.</li>
+          <li>Salva frequentemente o projeto (.pkt) para não perder a topologia.</li>
+          <li>O Packet Tracer não substitui ferramentas reais de captura como <em>tcpdump</em> ou Wireshark, mas é ótimo para aprender conceitos sem riscos.</li>
+          <li>Faz testes apenas em ambientes controlados e com autorização — nunca em redes alheias.</li>
+        </ul>
+      </div>
+    </section>
+    
+
+  <footer class="footer">
+    <p>&copy; 2025 OverSecurity</p>
+  </footer>
+</body>
+</html>
